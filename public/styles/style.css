@@ -1,0 +1,54 @@
+#taskIn {
+  width: 200px;
+  height: 18px;
+}
+
+body{
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  background-image: url("../img/Writing-Desk.jpg");
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  font-family: Futura;
+}
+
+h1{
+  text-align: center;
+}
+
+li{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#done{
+background-color: green;
+}
+
+ul{
+  list-style: none;
+}
+
+span{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#inner{
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+}
+
+#center{
+  z-index: 1;
+  background-color: #708090;
+  border-radius: 10px;
+
+}

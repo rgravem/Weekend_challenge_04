@@ -1,0 +1,1 @@
+CREATE TABLE task (id SERIAL PRIMARY KEY, complete VARCHAR(1), task VARCHAR(200));
