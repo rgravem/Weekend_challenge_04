@@ -18,11 +18,13 @@ app.listen( port, function(){
 //base url hit
 app.get('/', function(req,res){
   console.log('base url hit');
+  // send index file
   res.sendFile(path.resolve('public/index.html'));
 });
 // task list
 app.get('/tasks', function(req,res){
   console.log('getting task list');
+  // send task list to client
   pg.connect(connectionString, function(err, client, done){
     if (err){
       console.log(err);
@@ -43,6 +45,7 @@ app.get('/tasks', function(req,res){
 // add task route
 app.post('/addTask', urlEncodedParser, function(req, res){
   console.log('add task hit:', req.body);
+  // add task and resend task data
   var data = {complete: 'n', task: req.body.task};
   pg.connect( connectionString, function( err, client, done){
     if (err) {
@@ -65,6 +68,7 @@ app.post('/addTask', urlEncodedParser, function(req, res){
 app.post('/deleteTask', urlEncodedParser, function(req, res){
   console.log('deleteTask hit:', req.body);
   var data = {task: req.body.task};
+  // delete and resent db info
   pg.connect( connectionString, function( err, client, done){
     if (err) {
       console.log(err);

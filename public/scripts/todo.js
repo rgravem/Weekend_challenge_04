@@ -3,7 +3,7 @@ var tasks = [];
 
 $(document).ready(function(){
   console.log('JQ doc rdy');
-
+// initial call to get any stores tasks in db
 $.ajax({
   url: '/tasks',
   type: 'GET',
@@ -16,7 +16,7 @@ $.ajax({
     // $('#taskList').html()
   }
 });// end get ajax call
-
+// send new task to server and add to display
 $('#submitTask').on('click', function(){
   console.log('in addtask');
   var objectToSend = {
@@ -34,24 +34,25 @@ $('#submitTask').on('click', function(){
   }); // emnd addTask ajax call
   $('#taskIn').val('');
 });// end on click submitTask
-
+// on click for delete function and confirmation box
 $('body').on('click', '#deleteButton',  function(){
   var deleteMe = $(this).attr('data');
-  if(confirm("Are you sure you want to delete this task?") === true);{
+  var checkConfirm = confirm("Are you sure you want to delete this task?");
+  if (checkConfirm === true) {
     deleteTask(deleteMe);
+  }else {
+  return;
   }
 
-  // call delete function
-  // deleteTask(deleteMe);
 }); // end on click delete
-
+// complete button get data to go to complete fuction
 $('body').on('click', '#complete', function(){
   var completed = $(this).attr('data');
   //call completeTask
   completeTask(completed);
 });
 }); // end doc ready
-
+// function to display all tasks on dom
 var displayTasks = function(){
   console.log('in display tasks');
   var taskStatus = '';
@@ -66,7 +67,7 @@ var displayTasks = function(){
     console.log('taskStatus:', taskStatus);
   }
 };
-
+// delete function
 var deleteTask = function (selectedTask){
   console.log('in deleteTask');
   var objectToSend = {
@@ -84,7 +85,7 @@ var deleteTask = function (selectedTask){
     }
   });// end ajax deleteTask
 };
-
+// ajax call to change to complete
 var completeTask = function( selectedTask){
   console.log('in completeTask');
 
